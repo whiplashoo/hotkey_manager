@@ -32,9 +32,7 @@ class _VirtualKeyView extends StatelessWidget {
       ),
       child: Text(
         keyLabel,
-        style: TextStyle(
-          fontSize: 12,
-        ),
+        style: Theme.of(context).textTheme.bodyText1,
       ),
     );
   }
