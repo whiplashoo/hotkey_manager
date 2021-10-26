@@ -1,6 +1,6 @@
 import 'package:uuid/uuid.dart';
 import 'package:flutter/foundation.dart' show describeEnum;
-
+import 'dart:io';
 import './enums/key_code.dart';
 import './enums/key_modifier.dart';
 
@@ -52,6 +52,10 @@ class HotKey {
 
   @override
   String toString() {
-    return '${modifiers!.map((e) => e.keyLabel).join('')}${keyCode?.keyLabel}';
+    if (Platform.isMacOS) {
+    return '${modifiers!.map((e) => e.keyLabel).join()}${keyCode?.keyLabel}';
+    } else {
+      return '${modifiers!.map((e) => e.keyLabel).join('+')}+${keyCode?.keyLabel}';
+    }
   }
 }
